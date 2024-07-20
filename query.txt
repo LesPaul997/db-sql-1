@@ -1,3 +1,5 @@
+QUERY WITH SELECT
+
 1. Selezionare tutti gli studenti nati nel 1990 (160)
 
 select *
@@ -45,3 +47,30 @@ select count(id)
 from teachers 
 where phone is null;
 
+
+
+QUERY WITH GROUP BY
+
+1. Contare quanti iscritti ci sono stati ogni anno 
+
+select year(enrolment_date), count(id)
+from students 
+group by year(enrolment_date);
+
+2. Contare gli insegnanti che hanno l'ufficio nello stesso edificio
+
+select office_address, count(id)
+from teachers 
+group by office_address;
+
+3. Calcolare la media dei voti di ogni appello d'esame
+
+select exam_student.exam_id, avg(exam_student.vote) as voto_medio
+from exam_student 
+group by exam_student.exam_id;
+
+4. Contare quanti corsi di laurea ci sono per ogni dipartimento
+
+select degrees.department_id, count(degrees.id) 
+from degrees 
+group by degrees.department_id ;
